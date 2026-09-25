@@ -13,14 +13,9 @@
   src : url("rainyhearts.ttf")
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
-
-
-.space-grotesk-<uniquifier> {
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
+@font-face {
+  font-family: "Mieszkanie";
+  src : url("mieszkanie9.otf")
 }
 
 body {
@@ -99,11 +94,16 @@ center {
   
 .box {
   margin: 10px 0px 15px 0px;
-  border: 1px dotted #fff;
+  border: 1.6px dotted #fff;
   border-radius: 5px;
-  background: rgba(38, 100, 17, 0.55);
+  background: rgba(10, 60, 0, 0.75);
   padding: 0;
-  }
+}
+
+.box a {
+  color: #bdffa8;
+  text-decoration: underline dotted;
+}
   
 /*Prevent overflow of large images in main text areas.*/
 .box img {
@@ -112,15 +112,14 @@ center {
   }
   
 .header {
-  border: 1px dotted #fff;
-  text-align: center;
-  margin-top: 15px;
-  top: 0;
   height: auto;
-  font-family: "Daydream";
-  color: #bdffa8;
+  font-family: "Mieszkanie";
+  font-size: 26px;
+  color: rgba(40, 100, 0, 1.0);
+  /* border: 1px dotted #fff;
+  text-align: center;
   border-radius: 5px;
-  background: rgba(38, 100, 17, 0.55);
+  background: rgba(38, 100, 17, 0.55); */
   }
 
 /*Container for top row of links.*/
@@ -133,7 +132,8 @@ center {
   
 
 .xxiivv {
-  height: 10%;
+  width: 3vw;
+  height: auto;
 }
 
 /*Div style for individual links.*/
@@ -184,8 +184,13 @@ center {
   font-size: 1.075em;
   }
 
+.projects {
+  padding: 0em 1em 0.3em 0em;
+  font-size: 1.075em;
+}
+
 .changelog {
-  padding: 0.25em 1em 0.3em 1em;
+  padding: 0em 1em 0.3em 1em;
   font-size: 1.075em;
   }
 
@@ -199,7 +204,14 @@ center {
   padding-left: 10px;
 }
   
-  
+.stars {
+  color: rgba(200, 200, 200, 0.45);
+  text-align: center;
+}
+
+.hg {
+  color: rgba(100, 255, 70, 0.70);
+}
   
 /* For narrow screens: slightly narrows sidebars, and makes the width
  * of the main/center div flexible (sized relative to viewport width.)
@@ -241,3 +253,17 @@ center {
     font-size: 0.95em;
     }
   }
+
+.centeredBlock {
+  display: flex;
+  justify-content: center;
+}
+
+.bStack {
+  padding-bottom: 0.5vw;
+}
+
+.bStackF {
+  padding-top: 1.5vw;
+  padding-bottom: 1vw;
+}
