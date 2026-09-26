@@ -16,7 +16,7 @@
   <header class="page-header"></header>
   <main class="page-body">
     <div>
-      <p id="stay">stay a little longer, gaining gray as we find joy in wait</p>
+      <p id="stay">stay a little longer, gaining grey in lakes<br />we floated in for fun</p>
       <a id="key" href="hollowsgrove.html"><img id="keyImageBird" src="assets/img/bird2.png"></a>
       <a id="key" href="hollowsgrove.html"><img id="keyImageGrasshopper" src="assets/img/grasshopper.png"></a>
       <a id="key" href="hollowsgrove.html"><img id="keyImageCaterpillar" src="assets/img/caterpillar.png"></a>
@@ -143,10 +143,28 @@ function glitter() {
 
 //attach hover behaviour to whatever elements you want
 function bindHoverTargets() {
+  // Change this selector to target whatever you like:
   // e.g. 'a[href]', '.sparkle-link', '#myLink'
-  var targets = document.querySelectorAll('a[href]');
+  var target1 = document.querySelectorAll('a[href]');
+  var target2 = document.querySelectorAll('p');
 
-  targets.forEach(function(el) {
+  target1.forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      active = true;
+      if (!loopRunning) {
+        loopRunning = true;
+        sparkle();
+      }
+    });
+
+    el.addEventListener('mousemove', mouse);
+
+    el.addEventListener('mouseleave', function() {
+      active = false;
+    });
+  });
+
+  target2.forEach(function(el) {
     el.addEventListener('mouseenter', function() {
       active = true;
       if (!loopRunning) {
