@@ -18,6 +18,20 @@
   src : url("mieszkanie9.otf")
 }
 
+
+*::selection {
+  background: #91ff93;
+  color: #015202;
+}
+*::-moz-selection {
+  background: #91ff93;
+  color: #015202;
+}
+*::-webkit-selection {
+  background: #91ff93;
+  color: #015202;
+}
+
 body {
   font-size: 0.875em;
   font-family: "PixelBody";
@@ -41,7 +55,6 @@ center {
   margin: 0 auto;
   width: 870px;
   margin-top: 40px;
-  margin-bottom: 40px;
   border-left: 0px solid #12282f;
   border-right: 0px solid #12282f;  
   padding: 10px 20px;
@@ -50,12 +63,6 @@ center {
 
 .wrapper-2 {
   position: relative;
-}
-
-/*Header and footer images*/
-.header, .footer {
-  height: 200px;
-  overflow: hidden;
 }
 
 

@@ -5,16 +5,16 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Woodlands</title>
-    <link href="assets/woodlands.css" rel="stylesheet" type="text/css" media="all">
+    <title>Steepeholm</title>
+    <link href="assets/steepeholm.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body>
   <div class="wrapper">
   <header class="page-header"></header>
   <main class="page-body">
     <div>
-      <p id="stay">stay a little longer, find what you're looking for</p>
-      <a id="key" href="steepeholm.html"><img id="keyImage" src="assets/img/bird.png"></a>
+      <p id="stay">imagined pathways will take you<br /> where sunlight's longing shimmers<br />you drink, and we were young again</p>
+      <a id="key" href="layer2.html"><img id="keyImage" src="assets/img/door.png"></a>
     </div>
   </main>
   <footer class="page-footer" style="display: flex; justify-content: center;">grovetender@hollowsgrove.neocities.com 2024 - 2026</footer>
@@ -22,15 +22,26 @@
 </body>
 <script type="text/javascript">
 // <![CDATA[
-var colour="random";
-var sparkles=50;
+var speed=33; // lower number for faster
+var drops=100; // number of 'drops'
+var colour="#ee8695"; // colour of drops (generally grey!)
+var colour2="random";
 
-/****************************
-*  Tinkerbell Magic Sparkle *
-*(c)2005-13 mf2fm web-design*
+var sparkles=50;
+/***************************\
+*   Rainy Afternoon Effect  *
+*(c)2011-13 mf2fm web-design*
 *  http://www.mf2fm.com/rv  *
 * DON'T EDIT BELOW THIS BOX *
-****************************/
+\***************************/
+
+var flks=new Array();
+var flkx=new Array();
+var flky=new Array();
+var fldy=new Array();
+var swide, shigh, boddie;
+var ie_version=(navigator.appVersion.indexOf("MSIE")!=-1)?parseFloat(navigator.appVersion.split("MSIE")[1]):false;
+
 var x=ox=400;
 var y=oy=300;
 var swide=800;
@@ -47,9 +58,109 @@ var tinyv=new Array();
 var active=false; //only true while hovering
 var loopRunning=false; //prevents multiple sparkle() chains
 
-window.onload=function() {
+function addLoadEvent(funky) {
+  var oldonload=window.onload;
+  if (typeof(oldonload)!='function') window.onload=funky;
+  else window.onload=function() {
+    if (oldonload) oldonload();
+    funky();
+  }
+}
+
+// FIX #1: both effects now register through addLoadEvent so neither one
+// overwrites the other's window.onload assignment.
+addLoadEvent(storm);
+addLoadEvent(glitter);
+
+function storm() { if (document.getElementById) {
+  var r1, r2;
+  boddie=document.createElement("div");
+  boddie.style.position="fixed";
+  boddie.style.top="0px";
+  boddie.style.left="0px";
+  boddie.style.width="1px";
+  boddie.style.height="1px";
+  boddie.style.overflow="visible";
+  boddie.style.backgroundColor="transparent";
+  document.body.appendChild(boddie);
+  set_width();
+  for (var i=0; i<drops; i++) {
+    flks[i]=createRainDiv(16, 2, "transparent");
+    r1=createRainDiv(6, 2, colour);
+    r1.style.top="10px";
+    r1.style.left="0px";
+    flks[i].appendChild(r1);
+    r2=createRainDiv(10, 2, colour);
+    r2.style.top="0px";
+    r2.style.left="0px";
+    if (ie_version && ie_version<10) r2.style.filter="alpha(opacity=25)";
+    else r2.style.opacity=0.25;
+    flks[i].appendChild(r2);
+    flkx[i]=2*Math.floor(Math.random()*swide/2);
+    flky[i]=Math.floor(Math.random()*shigh);
+    fldy[i]=2+Math.floor(Math.random()*4);
+    flks[i].style.left=flkx[i]+"px";
+    flks[i].style.top=flky[i]+"px";
+    boddie.appendChild(flks[i]);
+  }
+  setInterval(cats_and_dogs, speed);
+}}
+
+// renamed the rain version of createDiv so it no longer collides
+// with the sparkle version below. This one keeps its "colour" parameter.
+function createRainDiv(height, width, colour) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height+"px";
+  div.style.width=width+"px";
+  div.style.overflow="hidden";
+  div.style.backgroundColor=colour;
+  return (div);
+}
+
+window.onresize=set_width;
+function set_width() {
+  var sw_min=999999;
+  var sh_min=999999;
+  if (document.documentElement && document.documentElement.clientWidth) {
+    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+  }
+  if (typeof(self.innerWidth)=='number' && self.innerWidth) {
+    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+  }
+  if (document.body.clientWidth) {
+    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+  }
+  if (sw_min==999999 || sh_min==999999) {
+    sw_min=800;
+    sh_min=600;
+  }
+  swide=sw_min;
+  shigh=sh_min;
+}
+
+function cats_and_dogs() {
+  var i;
+  for (i=0; i<drops; i++) {
+    flky[i]+=fldy[i];
+    if (flky[i]>=shigh-16) {
+      flky[i]=-16;
+      fldy[i]=2+Math.floor(Math.random()*4);
+      flkx[i]=2*Math.floor(Math.random()*swide/2);
+      flks[i].style.left=flkx[i]+"px";
+    }
+    flks[i].style.top=flky[i]+"px";
+  }
+}
+
+// renamed from the bare "window.onload=function(){...}" to a named
+// function, called via addLoadEvent above instead of a raw assignment.
+function glitter() {
   if (document.getElementById) {
-    // NEW: create one fixed, non-scrolling container for everything
+    // one fixed, non-scrolling container for everything
     var container = document.createElement("div");
     container.style.position = "fixed";
     container.style.top = "0";
@@ -63,23 +174,23 @@ window.onload=function() {
 
     var i, rats, rlef, rdow;
     for (var i=0; i<sparkles; i++) {
-      var rats=createDiv(3, 3);
+      var rats=createSparkleDiv(3, 3);
       rats.style.visibility="hidden";
-      container.appendChild(tiny[i]=rats); // CHANGED: append to container, not body
+      container.appendChild(tiny[i]=rats);
       starv[i]=0;
       tinyv[i]=0;
-      var rats=createDiv(5, 5);
+      var rats=createSparkleDiv(5, 5);
       rats.style.backgroundColor="transparent";
       rats.style.visibility="hidden";
-      var rlef=createDiv(1, 5);
-      var rdow=createDiv(5, 1);
+      var rlef=createSparkleDiv(1, 5);
+      var rdow=createSparkleDiv(5, 1);
       rats.appendChild(rlef);
       rats.appendChild(rdow);
       rlef.style.top="2px";
       rlef.style.left="0px";
       rdow.style.top="0px";
       rdow.style.left="2px";
-      container.appendChild(star[i]=rats); // CHANGED: append to container, not body
+      container.appendChild(star[i]=rats);
     }
     set_width();
     bindHoverTargets();
@@ -88,7 +199,6 @@ window.onload=function() {
 
 //attach hover behaviour to whatever elements you want
 function bindHoverTargets() {
-  // Change this selector to target whatever you like:
   // e.g. 'a[href]', '.sparkle-link', '#myLink'
   var targets = document.querySelectorAll('a[href]');
 
@@ -118,7 +228,7 @@ function sparkle() {
       star[c].style.left=(starx[c]=x)+"px";
       star[c].style.top=(stary[c]=y+1)+"px";
       star[c].style.clip="rect(0px, 5px, 5px, 0px)";
-      star[c].childNodes[0].style.backgroundColor=star[c].childNodes[1].style.backgroundColor=(colour=="random")?newColour():colour;
+      star[c].childNodes[0].style.backgroundColor=star[c].childNodes[1].style.backgroundColor=(colour2=="random")?newColour():colour2;
       star[c].style.visibility="visible";
       starv[c]=50;
       break;
@@ -209,31 +319,10 @@ function set_scroll() {
   }
 }
 
-window.onresize=set_width;
-function set_width() {
-  var sw_min=999999;
-  var sh_min=999999;
-  if (document.documentElement && document.documentElement.clientWidth) {
-    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
-    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
-  }
-  if (typeof(self.innerWidth)=='number' && self.innerWidth) {
-    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
-    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
-  }
-  if (document.body.clientWidth) {
-    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
-    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
-  }
-  if (sw_min==999999 || sh_min==999999) {
-    sw_min=800;
-    sh_min=600;
-  }
-  swide=sw_min;
-  shigh=sh_min;
-}
-
-function createDiv(height, width) {
+// renamed the sparkle version too, so both createDiv
+// variants coexist under distinct names instead of one silently
+// overwriting the other.
+function createSparkleDiv(height, width) {
   var div=document.createElement("div");
   div.style.position="absolute";
   div.style.height=height+"px";
@@ -244,10 +333,9 @@ function createDiv(height, width) {
 
 function newColour() {
   var c=new Array();
-  c[0]=Math.floor(Math.random()*(195-50)+50);
-  c[1]=Math.floor(Math.random()*(256-130)+130);
-  c[2]=Math.floor(Math.random()*(150));
-  // c.sort(function(){return (0.5 - Math.random());});
+  c[0]=Math.floor(Math.random()*(256-200)+200);
+  c[1]=Math.floor(Math.random()*(180-75)+75);
+  c[2]=Math.floor(Math.random()*(180-115)+115);
   return ("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
 }
 // ]]>

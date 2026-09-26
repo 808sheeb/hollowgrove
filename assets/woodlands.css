@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "Daydream";
+  src : url("Daydream.otf");
+}
+
+@font-face {
+  font-family: "PixelTitle";
+  src : url("visitor1.ttf")
+}
+
+@font-face {
+  font-family: "PixelBody";
+  src : url("rainyhearts.ttf")
+}
+
+@font-face {
+  font-family: "Mieszkanie";
+  src : url("mieszkanie9.otf")
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  font: 0.8em;
+  font-family: "PixelBody";
+  padding: 0;
+  margin: 0;
+  background-image: url("img/indexbg.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.page-header,
+.page-footer {
+  color: #015202;
+  padding: 20px;
+}
+
+.page-body {
+  padding: 20px;
+}
+
+.page-body p {
+  /*border: 1px solid grey*/;
+}
+
+#stay {
+  position: fixed;
+  top: 20vh;
+  left: 70vw;
+  display: inline-block;
+  text-align: right;
+  color: #91ff93 ;
+  background: #015202;
+  padding: 50px 100px 50px 100px;
+}
+
+*::selection {
+  background: #91ff93;
+  color: #015202;
+}
+
+*::-moz-selection {
+  background: #91ff93;
+  color: #015202;
+}
+
+*::-webkit-selection {
+  background: #91ff93;
+  color: #015202;
+}
+
+#keyImage {
+  opacity: 1;
+  transition: 0.3s ease;
+  scale: 1;
+  position: fixed;
+  top: 10vw;
+  left: 30vw;
+  width: 7vw;
+}
+
+#keyImage:hover {
+  opacity: 0;
+  scale: 1.1;
+}
