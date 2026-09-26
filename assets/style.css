@@ -20,16 +20,16 @@
 
 
 *::selection {
-  background: #91ff93;
-  color: #015202;
+  background: #a6ce8e;
+  color: #0e450b;
 }
 *::-moz-selection {
-  background: #91ff93;
-  color: #015202;
+  background: #a6ce8e;
+  color: #0e450b;
 }
 *::-webkit-selection {
-  background: #91ff93;
-  color: #015202;
+  background: #a6ce8e;
+  color: #0e450b;
 }
 
 body {
@@ -53,19 +53,12 @@ center {
   
 }
 .wrapper {
-  margin: 0 auto;
+  margin: -20px auto;
   width: 870px;
-  margin-top: 0px;
-  padding: 10px 20px;
 }
 
 .wrapper-2 {
   position: relative;
-}
-
-
-.header img {
-  border-top: 0px;
 }
 
 /*These three classes are just for defining the boundaries and size of the main and sidebar columns. Most fancy styling goes in the 'box' class.*/
@@ -98,8 +91,8 @@ center {
   }
   
 .box {
-  margin: 10px 0px 15px 0px;
-  background: rgba(10, 60, 0);
+  margin: 0px 0px 10px 0px;
+  background: #1b2a09;
   padding: 0;
 }
 
@@ -118,8 +111,10 @@ center {
   height: auto;
   font-family: "Mieszkanie";
   font-size: 26px;
-  background: #2d7625;
+  background: #1b2a09;
   text-align: center;
+  margin-top: -20px;
+  margin-bottom: -20px;
   /* border: 1px dotted #fff;
   text-align: center;
   border-radius: 5px;*/
@@ -164,10 +159,17 @@ center {
   }
 
 .footer {
+  padding-top: 20px;
   height: 100%;
   text-align: center;
-  color: #bdffa8;
+  font-size: 1.2em;
   }
+
+#face {
+  color: #a6ce8e;
+  background: #1b2a09;
+  padding: 0px 5px 0px 5px;
+}
   
 .box h1, .box h2, .box h3, .box h4 {
   margin: 0;
@@ -201,6 +203,7 @@ center {
 
 .cl_list {
   list-style-image: url("img/bullet_green.png");
+  margin: 5px 0px 5px 0px;
 }
 
 .about {
