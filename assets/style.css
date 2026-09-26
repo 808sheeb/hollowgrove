@@ -32,15 +32,6 @@
   color: #015202;
 }
 
-* {
-  box-sizing: inherit;
-}
-
-html {
-  height: 100%;
-  box-sizing: border-box;
-}
-
 body {
   height: 100%;
   font-size: 0.875em;
@@ -64,7 +55,7 @@ center {
 .wrapper {
   margin: 0 auto;
   width: 870px;
-  margin-top: 10px;
+  margin-top: 0px;
   padding: 10px 20px;
 }
 
@@ -127,12 +118,18 @@ center {
   height: auto;
   font-family: "Mieszkanie";
   font-size: 26px;
-  background: #a6ce8e;
+  background: #2d7625;
   text-align: center;
   /* border: 1px dotted #fff;
   text-align: center;
   border-radius: 5px;*/
-  }
+}
+
+
+.hg {
+  color: #a6ce8e;
+  padding: 20px;
+}
 
 /*Container for top row of links.*/
 .links {
@@ -210,10 +207,6 @@ center {
   list-style-position: outside;
   list-style-image: url("img/bullet_green.png");
   padding-left: 10px;
-}
-
-.hg {
-  color: #2d7625;
 }
   
 /* For narrow screens: slightly narrows sidebars, and makes the width
