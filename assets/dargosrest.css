@@ -88,7 +88,7 @@ body {
   color: #4a7a96;
 }
 
-#keyImage {
+#keyImageBird {
   opacity: 0;
   transition: 0.3s ease;
   position: fixed;
@@ -97,7 +97,35 @@ body {
   width: 3vw;
 }
 
-#keyImage:hover {
+#keyImageBird:hover {
+  opacity: 1;
+  scale: 2.6;
+}
+
+#keyImageGrasshopper {
+  opacity: 0;
+  transition: 0.3s ease;
+  position: fixed;
+  top: 45vh;
+  left: 27vw;
+  width: 3vw;
+}
+
+#keyImageGrasshopper:hover {
+  opacity: 1;
+  scale: 2.6;
+}
+
+#keyImageCaterpillar {
+  opacity: 0;
+  transition: 0.3s ease;
+  position: fixed;
+  top: 89vh;
+  left: 45vw;
+  width: 3vw;
+}
+
+#keyImageCaterpillar:hover {
   opacity: 1;
   scale: 2.6;
 }
