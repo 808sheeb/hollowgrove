@@ -5,16 +5,19 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steepeholm</title>
-    <link href="assets/steepeholm.css" rel="stylesheet" type="text/css" media="all">
+    <title>D'argo's Rest</title>
+    <link href="assets/dargosrest.css" rel="stylesheet" type="text/css" media="all">
   </head>
   <body>
   <div class="wrapper">
+  <div class="mouse-move">
+  <img class="bg mouse" value="2" src="assets/img/DargosRestForeground.png">
+  </div>
   <header class="page-header"></header>
   <main class="page-body">
     <div>
-      <p id="stay">imagined pathways will take you<br /> where sunlight's longing shimmers<br />you drink, and we were young again</p>
-      <a id="key" href="dargosrest.html"><img id="keyImage" src="assets/img/door.png"></a>
+      <p id="stay">stay a little longer, gaining gray as we find joy in wait</p>
+      <a id="key" href="hollowsgrove.html"><img id="keyImage" src="assets/img/bird2.png"></a>
     </div>
   </main>
   <footer class="page-footer" style="display: flex; justify-content: center;">grovetender@hollowsgrove.neocities.com 2024 - 2026</footer>
@@ -68,55 +71,8 @@ function addLoadEvent(funky) {
 }
 
 // both effects now register through addLoadEvent so neither one
-// overwrites the other's window.onload assignment
-addLoadEvent(storm);
+// overwrites the other's window.onload assignment.
 addLoadEvent(glitter);
-
-function storm() { if (document.getElementById) {
-  var r1, r2;
-  boddie=document.createElement("div");
-  boddie.style.position="fixed";
-  boddie.style.top="0px";
-  boddie.style.left="0px";
-  boddie.style.width="1px";
-  boddie.style.height="1px";
-  boddie.style.overflow="visible";
-  boddie.style.backgroundColor="transparent";
-  document.body.appendChild(boddie);
-  set_width();
-  for (var i=0; i<drops; i++) {
-    flks[i]=createRainDiv(16, 2, "transparent");
-    r1=createRainDiv(6, 2, colour);
-    r1.style.top="10px";
-    r1.style.left="0px";
-    flks[i].appendChild(r1);
-    r2=createRainDiv(10, 2, colour);
-    r2.style.top="0px";
-    r2.style.left="0px";
-    if (ie_version && ie_version<10) r2.style.filter="alpha(opacity=25)";
-    else r2.style.opacity=0.25;
-    flks[i].appendChild(r2);
-    flkx[i]=2*Math.floor(Math.random()*swide/2);
-    flky[i]=Math.floor(Math.random()*shigh);
-    fldy[i]=2+Math.floor(Math.random()*4);
-    flks[i].style.left=flkx[i]+"px";
-    flks[i].style.top=flky[i]+"px";
-    boddie.appendChild(flks[i]);
-  }
-  setInterval(cats_and_dogs, speed);
-}}
-
-// renamed the rain version of createDiv so it no longer collides
-// with the sparkle version below. This one keeps its "colour" parameter.
-function createRainDiv(height, width, colour) {
-  var div=document.createElement("div");
-  div.style.position="absolute";
-  div.style.height=height+"px";
-  div.style.width=width+"px";
-  div.style.overflow="hidden";
-  div.style.backgroundColor=colour;
-  return (div);
-}
 
 window.onresize=set_width;
 function set_width() {
@@ -140,20 +96,6 @@ function set_width() {
   }
   swide=sw_min;
   shigh=sh_min;
-}
-
-function cats_and_dogs() {
-  var i;
-  for (i=0; i<drops; i++) {
-    flky[i]+=fldy[i];
-    if (flky[i]>=shigh-16) {
-      flky[i]=-16;
-      fldy[i]=2+Math.floor(Math.random()*4);
-      flkx[i]=2*Math.floor(Math.random()*swide/2);
-      flks[i].style.left=flkx[i]+"px";
-    }
-    flks[i].style.top=flky[i]+"px";
-  }
 }
 
 // renamed from the bare "window.onload=function(){...}" to a named
@@ -336,7 +278,19 @@ function newColour() {
   c[0]=Math.floor(Math.random()*(256-200)+200);
   c[1]=Math.floor(Math.random()*(180-75)+75);
   c[2]=Math.floor(Math.random()*(180-115)+115);
+  c[2]=Math.floor(Math.random()*(180-115)+115);
   return ("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
+}
+
+document.addEventListener("mousemove", parallax);
+function parallax(event) {
+    this.querySelectorAll(".mouse").forEach((shift) => {
+        const position = shift.getAttribute("value");
+        const x = (window.innerWidth - event.pageX * position) / 90;
+        const y = (window.innerHeight - event.pageY * position) / 90;
+
+        shift.style.transform = `translateX(${x}px) translateY(${y}px)`;
+    });
 }
 // ]]>
 </script>
