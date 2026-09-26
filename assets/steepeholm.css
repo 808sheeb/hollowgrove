@@ -100,3 +100,9 @@ body {
 #keyImage:hover {
   opacity: 1;
 }
+
+#foot {
+  color: #ee8695;
+  background: #292831;
+  padding: 0px 5px 0px 5px;
+}
