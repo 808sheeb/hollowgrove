@@ -171,7 +171,7 @@ center {
   font-size: 1.2em;
   }
 
-#face {
+#foot {
   color: #a6ce8e;
   background: #1b2a09;
   padding: 0px 5px 0px 5px;
@@ -179,13 +179,13 @@ center {
   
 .box h1, .box h2, .box h3, .box h4 {
   margin: 0;
-  padding: 0.35em 0.25em 0.3em 0.5em;
+  padding: 0.35em 0.25em 0.1em 0.5em;
   text-align: left;
   font-family: "PixelBody";
   }
   
 .main .inner {
-  padding: 0.25em 1em 3.8em 1em;
+  padding: 0em 1em 3.8em 1em;
   font-size: 1.075em;
   background: url("img/flowerfield.gif");
   background-repeat: no-repeat;
@@ -193,7 +193,7 @@ center {
   }
 
 .inner {
-  padding: 0.25em 1em 0.3em 1em;
+  padding: 0em 1em 0.3em 1em;
   font-size: 1.075em;
   }
 
@@ -216,6 +216,7 @@ center {
   list-style-position: outside;
   list-style-image: url("img/bullet_green.png");
   padding-left: 10px;
+  margin: 0.5em;
 }
   
 /* For narrow screens: slightly narrows sidebars, and makes the width
