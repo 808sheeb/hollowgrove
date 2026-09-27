@@ -1,3 +1,5 @@
+
+
 @font-face {
   font-family: "Daydream";
   src : url("Daydream.otf");
@@ -30,6 +32,10 @@
 *::-webkit-selection {
   background: #a6ce8e;
   color: #0e450b;
+}
+
+html {
+  cursor: url("img/cursor.gif"), auto;
 }
 
 body {

@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap");
+
+body {
+  font-family: "Inconsolata", monospace;
+}
+
+.text {
+  color: #ffffff;
+}
+
+.sText {
+  color: #baf9ff;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.gText {
+  color: #a6f783
+  
+  
+}
