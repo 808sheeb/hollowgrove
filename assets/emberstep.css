@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "Daydream";
+  src : url("Daydream.otf");
+}
+
+@font-face {
+  font-family: "PixelTitle";
+  src : url("visitor1.ttf")
+}
+
+@font-face {
+  font-family: "PixelBody";
+  src : url("rainyhearts.ttf")
+}
+
+@font-face {
+  font-family: "Mieszkanie";
+  src : url("mieszkanie9.otf")
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  font: 0.8em;
+  font-family: "PixelBody";
+  padding: 0;
+  margin: 0;
+  background-image: url("img/emberstepbeach.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.page-header,
+.page-footer {
+  padding: 20px;
+}
+
+#foot {
+  color: #66b650;
+  background: #292831;
+  padding: 0px 5px 0px 5px;
+}
+
+.page-body {
+  padding: 20px;
+}
+
+.page-body p {
+  /*border: 1px solid grey*/;
+}
+
+#stay {
+  position: fixed;
+  top: 60vh;
+  left: 60vw;
+  display: inline-block;
+  text-align: left;
+  color: #292831;
+  background: #66b650;
+  padding: 50px 100px 50px 100px;
+}
+
+*::selection {
+  background: #292831;
+  color: #fbbbad;
+}
+
+*::-moz-selection {
+  background: #292831;
+  color: #fbbbad;
+}
+
+*::-webkit-selection {
+  background: #292831;
+  color: #fbbbad;
+}
+
+#keyImage {
+  opacity: 0;
+  transition: 0.3s ease;
+  position: fixed;
+  top: 35vh;
+  left: 27vw;
+  width: 10vw;
+}
+
+#keyImage:hover {
+  opacity: 1;
+  rotate: 25deg;
+}
